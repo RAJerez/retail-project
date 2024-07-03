@@ -8,6 +8,12 @@ from astro.files import File
 from astro.sql import Table, Metadata
 from astro.constants import FileType
 
+from cosmos.airflow.task_group import DbtTaskGroup
+from cosmos.constants import LoadMode
+from cosmos.config import RenderConfig
+
+from dbt.cosmos_config import DBT_PROJECT_CONFIG, DBT_CONFIG
+
 @dag(
     start_date=datetime(2024, 1, 1),
     schedule=None,
@@ -53,5 +59,15 @@ def retail():
         return check(scan_name, checks_subpath)
     
     check_load()
+    
+    transform = DbtTaskGroup(
+        group_id='transform',
+        project_config=DBT_PROJECT_CONFIG,
+        profile_config=DBT_CONFIG,
+        render_config=RenderConfig(
+            load_method=LoadMode.DBT_LS,
+            select=['path:models/transform'],
+        )
+    )
 
 retail()

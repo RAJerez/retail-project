@@ -6,5 +6,5 @@
 # Install google + cosmos + dbt
 # astronomer-cosmos[dbt-bigquery]==1.0.3
 
-astronomer-cosmos[dbt-bigquery]
+astronomer-cosmos[dbt-bigquery]==1.0.3
 protobuf==3.20.0
