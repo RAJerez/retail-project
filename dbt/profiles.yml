@@ -11,8 +11,8 @@ retail:
       timeout_seconds: 300
       location: US
 
-  logs:
-  version: 1
-  format: text
-  level: debug
-  path: logs/dbt.log
+  #logs:
+  #version: 1
+  #format: text
+  #level: debug
+  #path: logs/dbt.log
