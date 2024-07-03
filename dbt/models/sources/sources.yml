@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: retail
+    database: retail-project-425714 # Put the project id!
+    tables:
+      - name: raw_invoices
+      - name: country
